@@ -7,8 +7,10 @@ import BottomNav from './components/BottomNav';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'EduAI - Cours, Résumés & Quizz',
-  description: 'Apprends plus vite avec l\'IA',
+  title: 'EduAI - Apprendre autrement avec l\'IA',
+  description: 'Apprendre plus vite avec l\'aide de l\'IA. Résumés intelligents, quizz adaptatifs et suivi personnalisé.',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
+  themeColor: '#10b981',
 };
 
 export default function RootLayout({
@@ -17,12 +19,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body className={`${inter.className} bg-gray-50 min-h-screen`}>
+    <html lang="fr" suppressHydrationWarning>
+      <body 
+        className={`${inter.className} bg-gradient-to-br from-slate-50 via-white to-emerald-50 min-h-screen text-slate-900`}
+        style={{ minHeight: '100dvh' }}
+      >
         <AuthProvider>
-          <div className="pb-20"> {/* espace pour la bottom nav */}
+          {/* Contenu principal avec padding inférieur pour la navigation */}
+          <main className="pb-24 sm:pb-28">
             {children}
-          </div>
+          </main>
+          
+          {/* Navigation inférieure fixe */}
           <BottomNav />
         </AuthProvider>
       </body>
